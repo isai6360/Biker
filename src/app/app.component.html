@@ -1,0 +1,95 @@
+
+<mat-tab-group #matgroup>
+    <mat-tab label="Step 1"> 
+        <div class="container ">
+            <div class="row">
+      <div class="col-8" > 
+    <form [formGroup]="onboarding">
+    <div class="form-group">
+    <h5 class="label">OnBoarding Schedule</h5>
+   
+        <div class="row">
+          <div class="col-6 label text-left" >
+           Name of the Biker :
+          <span class="val">{{bikerName}} </span>
+        </div>
+     <div class="col-6 label text-left">
+                Mobile Number :
+            
+            <span class="val">
+                {{bikerMobileNo}} 
+                </span>
+            </div>
+          </div>
+      
+    <label >When can you attend training of Joy Ride?</label>
+    <input class="form-control" type="text" placeholder="" formControlName="trainingTime" >
+    
+            <label >Scheduled Date and Time of Onboarding</label>
+            
+                <div class="row">
+                  <div class="col-6 label text-left">
+                   Date : <span class="val">{{ScheduledDate}}</span>
+                  </div>
+                  <div class="col-6 label text-left">
+                  Time :<span class="val">{{ ScheduledTime}}</span>
+                  </div>
+                </div>
+         
+        
+       
+                <label for="Biker-Confirmation" >Biker Confirmation</label>
+              
+                <select class="col-6 form-control" required formControlName="bikerConfirmation" name="Biker-Confirmation">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+                <option>No reply</option>
+              </select>
+          <div>
+              <label  >Remarks</label>
+
+              <textarea  formControlName="remarks" class="form-control" placeholder = "Your message" required></textarea>
+            </div>     
+            <div class="center">  
+          <button type="button" class="btn btn-primary "[disabled]="!onboarding.valid" (click)='matgroup.selectedIndex = 1'>Next</button>
+      <button type="button" class="btn btn-primary ">View History</button>
+   </div>
+  </div>
+    </form> 
+    </div>
+
+    <div class="col-4 rightdiv">
+        <div class="status-box mat-elevation-z4">  
+       <div class="row">
+         <div class="col">
+           Status :
+         </div>
+         <div class="col">
+            {{status}}
+          </div>
+       </div>
+         
+</div>
+    </div>
+</div>
+</div>
+  </mat-tab>
+
+
+    <mat-tab label="Step 2">  <form [formGroup]="vehicleAssessment">
+        <ng-template >Fill out your address</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Address" formControlName="secondCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button >Back</button>
+          <button mat-button (click)='matgroup.selectedIndex = 2'>Next</button>
+        </div>
+      </form>
+    </mat-tab>
+
+
+    <mat-tab label="Step 3"> Content 3 </mat-tab>
+  </mat-tab-group>
+  
