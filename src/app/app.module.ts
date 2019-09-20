@@ -3,34 +3,30 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {MatStepperModule, MatTabsModule,MatInputModule, MatButtonModule,MatCheckboxModule} from '@angular/material'
-import {MatDatepickerModule} from '@angular/material/datepicker'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { BikerprofileComponent } from './bikerprofile/bikerprofile.component';
+import { TrainingLectureAttendeesComponent } from './training-lecture-attendees/training-lecture-attendees.component';
+import { NgbdSortableHeader } from './sortable.directive';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BikerprofileComponent,
+    TrainingLectureAttendeesComponent,
+    NgbdSortableHeader
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
-    MatButtonModule, 
-    MatTabsModule,
-    MatCheckboxModule,
-    MatStepperModule, MatInputModule,
-    MatDatepickerModule,
     ReactiveFormsModule,
     FormsModule
   ],
-  exports: [
-    MatButtonModule, MatTabsModule,
-    MatCheckboxModule,MatStepperModule, MatInputModule,
-  ],
+ 
   providers: [],
   bootstrap: [AppComponent]
 })
