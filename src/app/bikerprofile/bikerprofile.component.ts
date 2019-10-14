@@ -4,9 +4,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdSortableHeader , SortEvent} from '../sortable.directive';
 import { DecimalPipe } from '@angular/common';
-
 import { Observable ,Subject,BehaviorSubject,of} from 'rxjs';
 import { map, startWith ,switchMap,withLatestFrom,} from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { OnboardingComponent } from '../onboarding/onboarding.component';
 
 interface Biker {
   Date: string;
@@ -66,7 +67,7 @@ export class BikerprofileComponent implements OnInit {
   
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
-  constructor(private _formBuilder: FormBuilder,pipe: DecimalPipe,private modalService: NgbModal) { 
+  constructor(private _formBuilder: FormBuilder,pipe: DecimalPipe,private modalService: NgbModal,private router: Router) { 
     this.bikers$=this.filter.valueChanges.pipe(
       startWith(''),
       map(text => search(text, pipe))
@@ -158,5 +159,9 @@ this.modalService.open(content)
 finalSubmit(){
   this.modalService.dismissAll()
   /*---final submit --*/
+}
+openBikerProfile(name){
+
+  this.router.navigateByUrl("/onboarding")
 }
 }

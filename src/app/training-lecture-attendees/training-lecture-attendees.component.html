@@ -88,10 +88,19 @@
               </table>
 
               <div class="row" style="margin-top:3vw">
-                <div class="col ">
+                <div class="col-8">
                     <button type="button" class=" btn btn-primary violet" [disabled]="!isTrainingLectureAttendees_Selected.length"  >Submit Results</button>
               
                 </div>
+                <div >
+                    <p style="width:100%">
+                        Last modified by  : {{lastModifiedBy}}
+                    </p>
+                    <p style="width:100%">
+                       Last modified at   :  {{lastModifiedAt}}
+                   </p>
+                    
+                     </div>
               
               </div>
 

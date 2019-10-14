@@ -12,7 +12,7 @@
                           <option value="4">Pending</option>
                           </select>
                                 <select class="custom-select" style="width: auto;margin-left:2vw" >
-                                  <option value="">Requested Status by Maker</option>
+                                  <option value="">Status by Approver</option>
                                   <option value="2">status 1</option>  
                                    <option value="4">status 2</option>
                                   </select>
@@ -41,9 +41,9 @@
                   <th scope="col" sortable="Name" (sort)="onSort($event)">Name</th>
                   <th scope="col" sortable="Phone" (sort)="onSort($event)">Phone</th>
                   <th scope="col" sortable="currentStatus" (sort)="onSort($event)">Current Status</th>
-                  <th scope="col" sortable="requestedStatusByApprover" (sort)="onSort($event)">Requested Status By Approver</th>
+                  <th scope="col" sortable="requestedStatusByApprover" (sort)="onSort($event)">Requested Status By Maker</th>
                   <th scope="col" sortable="initialGear" (sort)="onSort($event)">Initial Gear</th>
-                  <th scope="col" >Requested Status by Maker</th>
+                  <th scope="col" >Status by Approver</th>
 
                 </tr>
                 </thead>
@@ -57,7 +57,7 @@
                   <ngb-highlight [result]="b.Date" [term]="filter.value"></ngb-highlight>
                </td>
                <td>
-                  <ngb-highlight [result]="b.Name" [term]="filter.value"></ngb-highlight>
+                  <ngb-highlight [result]="b.Name" [term]="filter.value" (click)="openBikerProfile(b.Name)" ></ngb-highlight>
                </td>
                <td>
                   <ngb-highlight [result]="b.Phone" [term]="filter.value"></ngb-highlight>

@@ -1,0 +1,1522 @@
+<ngb-tabset #t="ngbTabset" [activeId]="tabSelected">
+        <ngb-tab id="step0" title="Onboarding" >
+          <ng-template ngbTabContent>
+              
+              <div class="container ">
+                  <div class="row">
+            <div class="col-8" > 
+          <form [formGroup]="onboarding">
+          <div class="form-group">
+          <h5 class="label">OnBoarding Schedule</h5>
+         
+          <label >  Biker Name</label>
+              <div class="row">
+                <div class="col-6 val text-left" >
+               
+              {{bikerName}} 
+              </div>
+            </div>
+            <label >  Mobile Number </label>
+      
+            <div class="row">
+           <div class="col-6 val text-left">
+      
+                      {{bikerMobileNo}} 
+                    
+                  </div>
+                </div>
+                <label > Reg ID</label>
+      
+                <div class="row">
+               <div class="col-6 val text-left">
+          
+                          {{regId}} 
+                        
+                      </div>
+                    </div>
+          <label >When can you attend training of Joy Ride?</label>
+          <input class="form-control joyride" type="text" placeholder="" formControlName="trainingTime" >
+          
+             
+                  <div class="row" style="margin-top:10px">
+                      <div class="col-7 val text-left" >
+                          <label >Scheduled Date  and Time of Onboarding</label>
+      
+                          <div class="input-group">
+                              <input class="form-control" placeholder="yyyy-mm-dd" name="dp" formControlName="ScheduledDate" ngbDatepicker #d="ngbDatepicker">
+                              <div class="input-group-append">
+                                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                              </div>
+                            </div>            
+                            </div>
+                            <div class="col-5 val text-left" >
+                                <ngb-timepicker formControlName="ScheduledDatetime"></ngb-timepicker>
+      
+                              </div>
+                  </div>
+                      
+              
+      
+             
+                      <label for="Biker-Confirmation" >Did Biker Confirm Schedule</label>
+                    
+                      <select class="col-6 form-control" required formControlName="bikerConfirmation" name="Biker-Confirmation">
+                      <option value="">Select</option>
+                      <option>Yes</option>
+                      <option>No</option>
+                      <option>No reply</option>
+                    </select>
+                    <label for="Biker-arrival" >Did Biker arrive on Scheduled date</label>
+                    
+                      <select class="col-6 form-control" required formControlName="bikerArrival" name="Biker-arrival">
+                      <option value="">Select</option>
+                      <option>Yes</option>
+                      <option>No</option>
+                     
+                    </select>
+                <div>
+                    <label  >Remarks</label>
+      
+                    <textarea  formControlName="remarks" maxlength="255" class="form-control" placeholder = "Your message" required></textarea>
+                    <span style="font-size:9px;color:#a29595;">
+                        Minimum 255 characters allowed</span>
+                  </div>     
+      
+      
+        </div>
+          </form> 
+          </div>
+      
+          <div class="col-4" style="margin-top:15px">
+            <div >
+              <p style="width:100%">
+                  Last modified by  : {{lastModifiedBy}}
+              </p>
+              <p style="width:100%">
+                 Last modified at   :  {{lastModifiedAt}}
+             </p>
+              
+               </div>
+               <div class="rightdiv">
+            <div class="status-box"> 
+                <div >
+             <p style="width:100%">
+                 Status  : {{onboardingStatus}}
+             </p>
+             
+              </div> 
+             </div>
+            </div>
+            </div>
+      
+       
+      </div>
+      
+      <div class="row">
+        <div class="col-8 center">
+            <button type="button" class="btn btn-primary" [disabled]="!onboarding.valid"  (click)="Save('step1')">Save</button>
+      
+        </div>
+        <div class="col-4 center">
+      
+      <button type="button" class="btn btn-primary ">View History</button>
+      </div>
+      </div>
+      
+      </div>
+      </ng-template>
+      </ngb-tab>
+      <ngb-tab id="step1" >
+        <ng-template ngbTabTitle>Vehicle Assessment</ng-template>
+        <ng-template ngbTabContent> 
+          <div class="container ">
+                <div class="row">
+          <div class="col-8" > 
+        <form [formGroup]="vehicleAssessment">
+      
+        <div class="form-group">
+      
+        <h5 class="label">Vehicle Assessment</h5>
+        <label >Biker Name</label>
+        <div class="val">{{bikerName}}</div>
+        <label >Mobile Number</label>
+        <div class="val">{{bikerId}}</div>
+        <label >Reg Id</label>
+        <div class="val">{{regId}}</div>
+      
+        <label >Upload Motorcycle Photo </label>
+        <div class="filediv">
+            <label class="choosePhoto">Choose Photo</label>
+              <input type="file" class="hide_file"  (change)="onFileSelected($event)" formControlName="bikeImg" accept="image/*"  id="exampleFormControlFile1">
+              <span _ngcontent-hbq-c0="" style="
+              color: black;
+              padding: 10px;
+          ">{{selectedFile}}</span>
+            </div>
+      
+        <label >Vehicle Assessment date</label>
+      
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd" name="dp" formControlName="vadate" ngbDatepicker #d="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+              </div>
+            </div>
+          
+        <label for="vaStatus" >Vehicle Assessment status</label>           
+        <select class="col-6 form-control" required formControlName="vaStatus" name="vaStatus">
+        <option value="">Select</option>
+        <option>Pass</option>
+        <option>Fail</option>
+       
+      </select>
+      <div>
+      <label  >Remarks</label>
+      <textarea  formControlName="vaRemarks" maxlength="255" class="form-control" placeholder = "Your message" required></textarea>
+      <span style="font-size:9px;color:#a29595;">
+          Minimum 255 characters allowed</span>
+      </div>     
+      </div>
+      </form> 
+      </div>
+      <div class="col-4" style="margin-top:15px">
+        <div >
+          <p style="width:100%">
+              Last modified by  : {{lastModifiedBy}}
+          </p>
+          <p style="width:100%">
+             Last modified at   :  {{lastModifiedAt}}
+         </p>
+          
+           </div>
+           
+      <div class="rightdiv">
+          <div class="status-box"> 
+              <div >
+           <p style="width:100%">
+               Status  : {{vehicleAssessmentStatus}}
+           </p>
+           <p style="width:100%">
+              Assessor Name :  {{vehicleAssessorName}}
+          </p>
+           
+            </div> 
+           </div>
+      </div>
+      </div>
+      </div>
+      
+      <div class="row">
+          <div class="col-8 center">
+              <button type="button" class="btn btn-primary" [disabled]="!vehicleAssessment.valid" (click)="Save('step2')">Save</button>
+        
+          </div>
+          <div class="col-4 center">
+        
+        <button type="button" class="btn btn-primary ">View History</button>
+        </div>
+        </div> 
+        
+      </div>
+      </ng-template>
+        </ngb-tab>
+          
+        <ngb-tab id="step2" >
+            <ng-template ngbTabTitle>Skills Assessment</ng-template>
+            <ng-template ngbTabContent> 
+                <div class="container ">
+                    <div class="row">
+              <div class="col-8" > 
+            <form [formGroup]="skillAssessment">
+            <div class="form-group">
+            <h5 class="label">Skills Assessment</h5>
+            <label >Biker Name</label>
+            <div class="val">{{bikerName}}</div>
+            <label >Mobile Number</label>
+            <div class="val">{{bikerId}}</div>
+            <label >Reg Id</label>
+            <div class="val">{{regId}}</div>
+            <label >Skills Assessment date</label>
+          
+                <div class="input-group">
+                  <input class="form-control" placeholder="yyyy-mm-dd" name="skillAssessmentDate" formControlName="saDate" ngbDatepicker #d="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                  </div>
+                </div>
+              
+            <label for="saStatus" >Skills Assessment status</label>           
+            <select class="col-6 form-control" required formControlName="saStatus" name="saStatus">
+            <option value="">Select</option>
+            <option>Pass</option>
+            <option>Fail</option>
+           
+          </select>
+          <div>
+          <label  >Remarks</label>
+          <textarea  formControlName="saRemarks" maxlength="255" class="form-control" placeholder = "Your message" required></textarea>
+          <span style="font-size:9px;color:#a29595;">
+              Minimum 255 characters allowed</span>
+        </div>     
+          </div>
+          </form> 
+          </div>
+          
+          <div class="col-4" style="margin-top:15px">
+            <div >
+              <p style="width:100%">
+                  Last modified by  : {{lastModifiedBy}}
+              </p>
+              <p style="width:100%">
+                 Last modified at   :  {{lastModifiedAt}}
+             </p>
+              
+               </div>
+               <div class="rightdiv">
+              <div class="status-box"> 
+                  <div >
+               <p style="width:100%">
+                   Status  : {{skillStatus}}
+               </p>
+               <p style="width:100%">
+                  Assessor Name :  {{skillAssessorName}}
+              </p>
+               
+                </div> 
+               </div>
+          
+          </div>
+          </div>
+                    </div>
+          <div class="row">
+              <div class="col-8 center">
+                  <button type="button" class="btn btn-primary" [disabled]="!skillAssessment.valid" (click)="Save('step3')">Save</button>
+            
+              </div>
+              <div class="col-4 center">
+            
+            <button type="button" class="btn btn-primary ">View History</button>
+            </div>
+            </div> 
+      
+          </div>
+          </ng-template>
+            </ngb-tab>
+      
+            
+                <ngb-tab id="step3"  title="Training Lecture">
+                    <ng-template ngbTabContent> 
+                        <div class="container ">
+                            <div class="row">
+                      <div class="col-8" > 
+                    <form [formGroup]="trainingLecture">
+                    <div class="form-group">
+                    <h5 class="label">Training Lecture</h5>
+                    <label >Biker Name</label>
+                    <div class="val">{{bikerName}}</div>
+                    <label >Mobile Number</label>
+                    <div class="val">{{bikerId}}</div>
+                    <label >Reg Id</label>
+                    <div class="val">{{regId}}</div>
+                  
+                    <label >Training Lecture Date</label>
+                  
+                        <div class="input-group">
+                          <input class="form-control" placeholder="yyyy-mm-dd" name="trainingLectureDate" formControlName="trainingLectureDate" ngbDatepicker #d="ngbDatepicker">
+                          <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                          </div>
+                        </div>
+                      
+                    <label for="trainingLectureBatchNo" >Batch Number</label>           
+                    <select class="col-6 form-control" required formControlName="trainingLectureBatchNo" name="trainingLectureBatchNo">
+                    <option value="">Select</option>
+                    <option *ngFor="let num of [1,2,3,4,5,6,7,8,10]">{{num}}</option>
+                   
+                   
+                  </select>
+                  <div>
+                  <label  >Remarks</label>
+                  <textarea  formControlName="trainingLectureRemarks"  maxlength="255" class="form-control" placeholder = "Your message" required></textarea>
+                  <span style="font-size:9px;color:#a29595;">
+                      Minimum 255 characters allowed</span>
+                </div>     
+                  </div>
+                  </form> 
+                  </div>
+                  
+                  <div class="col-4" style="margin-top:15px">
+                    <div >
+                      <p style="width:100%">
+                          Last modified by  : {{lastModifiedBy}}
+                      </p>
+                      <p style="width:100%">
+                         Last modified at   :  {{lastModifiedAt}}
+                     </p>
+                      
+                       </div>
+                       <div class="rightdiv">
+                      <div class="status-box"> 
+                          <div >
+                       <p style="width:100%">
+                           Status  : {{trainingLectureStatus}}
+                       </p>
+                       <p style="width:100%">
+                          Attendance :  {{trainingLectureAttendance}}
+                      </p>
+                      <p style="width:100%">
+                          Training Status  : {{trainingStatus}}
+                      </p>
+                     
+                      <p style="width:100%">
+                          Trainer Name  : {{trainingName}}
+                      </p>
+                        </div> 
+                       </div>
+                  
+                  </div>
+                  </div>
+                </div>
+                  <div class="row">
+                      <div class="col-8 center">
+                          <button type="button" class="btn btn-primary" [disabled]="!trainingLecture.valid" (click)="Save('step3b')">Save</button>
+                    
+                      </div>
+                      <div class="col-4 center">
+                    
+                    <button type="button" class="btn btn-primary ">View History</button>
+                    </div>
+                    </div> 
+              
+                  </div>
+      
+                
+       </ng-template>
+       </ngb-tab> 
+      
+      
+       
+        <ngb-tab id="step3c"  title="GCASH" >
+      <ng-template ngbTabContent> 
+                <div class="container ">
+                    <div class="row">
+              <div class="col-8" > 
+            <form [formGroup]="gCash">
+            <div class="form-group">
+                <h5 class="label">GCASH</h5>
+      
+                <label >Biker Name</label>
+                <div class="val">{{bikerName}}</div>
+                <label >Mobile Number</label>
+                <div class="val">{{bikerId}}</div>
+                <label >Reg Id</label>
+                <div class="val">{{regId}}</div>
+            
+                <label class="col">Type</label>
+          
+              
+                  <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="gCashType1" name="gCashType" class="custom-control-input">
+                      <label class="custom-control-label" for="gCashType1">New</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="gCashType2" name="gCashType" class="custom-control-input">
+                      <label class="custom-control-label" for="gCashType2">Existing</label>
+                    </div>
+      
+                  <label class="col">GCASH Number to be used  </label>
+                  <input class="form-control" type="number" placeholder="" formControlName="gCAShNumber" >
+      
+                  <label >Payment for GCASH Kit</label>
+                  <input class="form-control" type="number" placeholder="" formControlName="paymentGCASH" >
+      
+      
+            <label class="col">Has biker filled up the GCASH Registration Form?</label>
+          <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="gCashReg1" name="gCashReg" class="custom-control-input">
+                  <label class="custom-control-label" for="gCashReg1">Yes</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="gCashReg2" name="gCashReg" class="custom-control-input">
+                  <label class="custom-control-label" for="gCashReg2">No</label>
+                </div>
+          <div>
+          <label  class="col">Remarks</label>
+          <textarea  formControlName="gCashRemarks" class="form-control" maxlength="255"  placeholder = "Your message" required></textarea>
+          <span style="font-size:9px;color:#a29595;">
+              Minimum 255 characters allowed</span>  
+        </div>     
+          </div>
+          </form> 
+          </div>
+          
+          <div class="col-4" style="margin-top:15px">
+            <div >
+              <p style="width:100%">
+                  Last modified by  : {{lastModifiedBy}}
+              </p>
+              <p style="width:100%">
+                 Last modified at   :  {{lastModifiedAt}}
+             </p>
+              
+               </div>
+               <div class="rightdiv">
+              <div class="status-box"> 
+                  <div >
+                <p style="width:100%">
+                    Status  : {{gCashStatus}}
+                </p>
+                
+                </div> 
+                </div>
+          </div>
+          </div>
+          </div>
+        
+          <div class="row">
+              <div class="col-8 center">
+                  <button type="button" class="btn btn-primary" [disabled]="!gCash.valid" (click)="Save('step3d')">Save</button>
+            
+              </div>
+              <div class="col-4 center">
+            
+            <button type="button" class="btn btn-primary ">View History</button>
+            </div>
+            </div> 
+      
+          </div>
+          </ng-template>
+            </ngb-tab> 
+      
+          
+       <ngb-tab id="step3d"  title="InitialTopUps">
+       <ng-template ngbTabContent> 
+                <div class="container ">
+                    <div class="row">
+              <div class="col-8" > 
+            <form [formGroup]="initialTopups">
+            <div class="form-group">
+                <h5 class="label">Initial Topups</h5>
+              <label >Biker Name</label>
+                <div class="val">{{bikerName}}</div>
+                <label >Mobile Number</label>
+                <div class="val">{{bikerId}}</div>
+                <label >Reg Id</label>
+                <div class="val">{{regId}}</div>
+                
+                    
+                
+                  <label >Initial Topup Amount </label>
+                  <input class="form-control" type="number" placeholder="" formControlName="initialTopupAmt" >
+      
+                  <label >Other Amount</label>
+                  <input class="form-control" type="number" placeholder="" formControlName="otherAmt" >
+      
+      
+            
+            
+          
+          <div>
+          <label  >Remarks</label>
+          <textarea  formControlName="initialTopupRemarks" maxlength="255" class="form-control" placeholder = "Your message" required></textarea>
+          <span style="font-size:9px;color:#a29595;">
+              Minimum 255 characters allowed</span>
+        </div>     
+          </div>
+          </form> 
+          </div>
+          
+          <div class="col-4" style="margin-top:15px">
+            <div >
+              <p style="width:100%">
+                  Last modified by  : {{lastModifiedBy}}
+              </p>
+              <p style="width:100%">
+                 Last modified at   :  {{lastModifiedAt}}
+             </p>
+              
+               </div>
+               <div class="rightdiv">
+              <div class="status-box"> 
+                  <div >
+                <p style="width:100%">
+                    Status  : {{InitialTopUpStatus}}
+                </p>
+                
+                </div> 
+                </div>
+          </div>
+          </div>
+          </div>
+        
+          <div class="row">
+              <div class="col-8 center">
+                  <button type="button" class="btn btn-primary" [disabled]="!initialTopups.valid" (click)="Save('step3e')">Save</button>
+            
+              </div>
+              <div class="col-4 center">
+            
+            <button type="button" class="btn btn-primary ">View History</button>
+            </div>
+            </div> 
+      
+          </div>
+       </ng-template>
+       </ngb-tab>                                         
+        
+       <ngb-tab id="step3e"  title="Mobile Application" >
+          <ng-template ngbTabContent> 
+            <div class="container ">
+                <div class="row">
+          <div class="col-8" > 
+        <form [formGroup]="mobileapp">
+        <div class="form-group">
+            <h5 class="label">Mobile Application</h5>
+            <label >  Biker Name</label>
+              <div class="row">
+                <div class="col-6 val text-left" >
+               
+              {{bikerName}} 
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-6 val text-left">
+            <label >  Mobile Number </label>
+            </div>
+            <div class="col-6 val text-left">
+                <label >  GCASH Number </label>
+              </div>
+          </div>
+            <div class="row">
+           <div class="col-6 val text-left">
+      
+                    {{bikerMobileNo}} 
+                    
+               <span style="margin:20px">
+                  <button type="button" class="btn btn-primary " (click)="copyMobileNo()">Copy</button>
+      
+               </span>
+                 
+               <span style="margin-right:20px">
+                      <button type="button" class="btn btn-primary " (click)="EditMobileNo(content)" >Edit</button>
+      
+                  </span>     
+                    </div>
+                    <div class="col-6 val text-left" style="align-items: center;display: flex;">
+      
+                        +639178904993
+                        </div>
+                </div>
+                <label > Reg ID</label>
+      
+                <div class="row">
+               <div class="col-6 val text-left">
+          
+                          {{regId}} 
+                        
+                      </div>
+                    </div>
+                    <label > Alternate Number</label>
+      
+                <div class="row">
+               <div class="col-6 val text-left">
+          
+                  <input class="form-control " type="text" placeholder="" formControlName="atlernateNumber" >
+      
+                        
+                      </div>
+                    </div>
+            <label class="col" >Has biker's mobile number been validated?</label>
+            <div class="input-group" >
+              <div>
+                <input type="radio" value="Yes" formControlName="mobileValidation"  >
+      <span style="margin:10px">Yes</span>
+      </div>
+            <div  >
+                <input type="radio"  value="For revalidation" formControlName="mobileValidation"  >
+      <span style="margin:10px"> For revalidation</span>
+      </div>
+            </div>
+      
+       
+              <label class="col">Has biker's IMEI been validated?</label>
+              <div class="input-group" >
+                  <div>
+                    <input type="radio" value="Yes" formControlName="imeiValidation"  >
+          <span style="margin:10px">Yes</span>
+          </div>
+                <div  >
+                    <input type="radio"  value="For revalidation" formControlName="imeiValidation"  >
+          <span style="margin:10px">For revalidation</span>
+          </div>
+                </div>
+             
+            
+      
+                <label class="col">Does biker have biker app installed on phone?</label>
+               
+                <div class="input-group" >
+                    <div>
+                      <input type="radio" value="Yes" formControlName="isBikerHasMobileApp"  >
+            <span style="margin:10px">Yes</span>
+            </div>
+                  <div  >
+                      <input type="radio"  value="For revalidation" formControlName="isBikerHasMobileApp"  >
+            <span style="margin:10px">For revalidation</span>
+            </div>
+                  </div>
+               
+              
+                                                                                  
+      <div>
+       <label  >Remarks</label>
+       <textarea  formControlName="mobileappRemarks" maxlength="255" class="form-control" placeholder = "Your message" required></textarea>
+       <span style="font-size:9px;color:#a29595;">
+          Minimum 255 characters allowed</span> 
+      </div>     
+       </div>
+       </form> 
+       </div>
+       
+       <div class="col-4" style="margin-top:15px">
+        <div >
+          <p style="width:100%">
+              Last modified by  : {{lastModifiedBy}}
+          </p>
+          <p style="width:100%">
+             Last modified at   :  {{lastModifiedAt}}
+         </p>
+          
+           </div>
+           <div class="rightdiv">
+          <div class="status-box"> 
+              <div >
+                  <p style="width:100%;margin-bottom:0px">
+                     Is Mobile number and GCash number the same?
+                  </p>
+                  <p style="width:100%;margin-top:1px">
+                     No
+                   </p>
+           <p style="width:100%">
+               Status  : {{mobileappStatus}}
+           </p>
+           
+            </div> 
+           </div>
+      </div>
+      </div>
+      </div>
+      
+      <div class="row">
+          <div class="col-8 center">
+              <button type="button" class="btn btn-primary" [disabled]="!mobileapp.valid" (click)="Save('step3f')">Save</button>
+        
+          </div>
+          <div class="col-4 center">
+        
+        <button type="button" class="btn btn-primary ">View History</button>
+        </div>
+        </div> 
+      
+      </div>
+      </ng-template>
+      </ngb-tab>     
+      
+      
+      <ngb-tab id="step3f"  title="Documents" >
+          <ng-template ngbTabContent> 
+      <div class="container ">
+          <div class="row">
+      <div class="col-8" > 
+      <form [formGroup]="docs">
+      <div class="form-group">
+      <h5 class="label">Documents</h5>
+      <label >  Biker Name</label>
+              <div class="row">
+                <div class="col-6 val text-left" >
+               
+              {{bikerName}} 
+              </div>
+            </div>
+            <label >  Mobile Number </label>
+      
+            <div class="row">
+           <div class="col-6 val text-left">
+      
+                      {{bikerMobileNo}} 
+                    
+                  </div>
+                </div>
+                <label > Reg ID</label>
+      
+                <div class="row">
+               <div class="col-6 val text-left">
+          
+                          {{regId}} 
+                        
+                      </div>
+                    </div>
+      <label >Has biker's NBI Clearance been validated?</label>
+      <div class="input-group" >
+          <div>
+            <input type="radio" value="Yes" formControlName="nbiValidation"  >
+      <span style="margin:10px">Yes</span>
+      </div>
+        <div  >
+            <input type="radio"  value="For revalidation" formControlName="nbiValidation"  >
+      <span style="margin:10px">For revalidation</span>
+      </div>
+        </div>
+      
+      
+        <label >Has biker's Police/Brgy Clearance been validated?</label>
+        <div class="input-group" >
+            <div>
+              <input type="radio" value="Yes" formControlName="policyValidation"  >
+        <span style="margin:10px">Yes</span>
+        </div>
+          <div  >
+              <input type="radio"  value="For revalidation" formControlName="policyValidation"  >
+        <span style="margin:10px">For revalidation</span>
+        </div>
+          </div>
+       
+      
+      
+          <label >Has biker's Driver's License been validated?</label>
+          
+          <div class="input-group" >
+              <div>
+                <input type="radio" value="Yes" formControlName="driverLicenseValidation"  >
+          <span style="margin:10px">Yes</span>
+          </div>
+            <div  >
+                <input type="radio"  value="For revalidation" formControlName="driverLicenseValidation"  >
+          <span style="margin:10px">For revalidation</span>
+          </div>
+            </div>
+      
+            <label >Has biker's OR/CR been validated?</label>
+            
+            <div class="input-group" >
+                <div>
+                  <input type="radio" value="Yes" formControlName="orValidation"  >
+            <span style="margin:10px">Yes</span>
+            </div>
+              <div  >
+                  <input type="radio"  value="For revalidation" formControlName="orValidation"  >
+            <span style="margin:10px">For revalidation</span>
+            </div>
+              </div>
+              <label >Has biker's Supporting Documents been validated?</label>
+             
+              <div class="input-group" >
+                  <div>
+                    <input type="radio" value="Yes" formControlName="supportingDocumentValidation"  >
+              <span style="margin:10px">Yes</span>
+              </div>
+                <div  >
+                    <input type="radio"  value="For revalidation" formControlName="supportingDocumentValidation"  >
+              <span style="margin:10px">For revalidation</span>
+              </div>
+                </div>                                                                     
+      <div>
+       <label  >Remarks</label>
+       <textarea  formControlName="docsRemarks" maxlength="255" class="form-control" placeholder = "" required></textarea>
+       <span style="font-size:9px;color:#a29595;">
+          Minimum 255 characters allowed</span>
+       </div>     
+       </div>
+       </form> 
+       </div>
+       
+       <div class="col-4" style="margin-top:15px">
+        <div >
+          <p style="width:100%">
+              Last modified by  : {{lastModifiedBy}}
+          </p>
+          <p style="width:100%">
+             Last modified at   :  {{lastModifiedAt}}
+         </p>
+          
+           </div>
+           <div class="rightdiv">
+          <div class="status-box"> 
+              <div >
+           <p style="width:100%">
+               Status  : {{docsStatus}}
+           </p>
+           
+            </div> 
+           </div>
+      </div>
+      </div>
+      </div>
+      
+      <div class="row">
+          <div class="col-8 center">
+              <button type="button" class="btn btn-primary" [disabled]="!docs.valid" (click)="save('step4')">Save</button>
+        
+          </div>
+          <div class="col-4 center">
+        
+        <button type="button" class="btn btn-primary ">View History</button>
+        </div>
+        </div> 
+      
+      </div>
+      </ng-template>
+      </ngb-tab>   
+      
+      <ngb-tab id="step4" class="step4" title="Status Maker">
+          <ng-template ngbTabContent>
+                <form [formGroup]="statusMaker">     
+              <div class="container ">
+                  <div class="row">
+            <div class="col-6" > 
+         
+          <div class="form-group">
+          <h5 class="label">Status Maker</h5>
+         
+          <label >  Biker Name </label>
+              <div class="row">
+                <div class="col-6 val text-left" >
+               
+              {{bikerName}} 
+              </div>
+            </div>
+            <label > Mobile Number</label>
+      
+            <div class="row">
+           <div class="col-6 val text-left">
+      
+                      {{bikerMobileNo}} 
+                    
+                  </div>
+                </div>
+            <label > Gcash Number</label>
+      
+            <div class="row">
+              
+                
+           <div class="col-6 val text-left">
+              +639178904993
+                  
+              <!--{{gCashNo}} --> 
+                    
+                  </div>
+                </div>
+                <label > Alternate Number</label>
+      
+                <div class="row">
+               <div class="col-6 val text-left">
+          
+                      <!--{{atlernateNumber}} -->    
+                      +639181203012
+                      </div>
+                    </div>
+                    <label > Reg ID</label>
+      
+                <div class="row">
+               <div class="col-6 val text-left">
+          
+                          {{regId}} 
+                        
+                      </div>
+                    </div>
+               
+               <label >  1.Onboarding Attendance</label>
+                <p class="val">
+                       status : {{onboardingStatus}}                            
+                </p>
+                 <label > 2. Vehicle Assessment</label>
+                <p class="val">
+                       status : {{vaStatus}}                            
+                </p> 
+                <label > 3. Skills Assessment</label>
+                <p class="val">
+                       status : {{saStatus}}                            
+                </p>
+                <label >   4. Training Lecture</label>
+                <p class="val">
+                       status : {{trainingLectureStatus}}                            
+                </p>
+                <label >  5a. Biker Photo</label>
+                <p class="val">
+                        status : {{bikerPhotoStatus}}                            
+                </p>
+                <label >  5b. GCASH</label>
+                <p class="val">
+                        status : {{gCashStatus}}                            
+                </p>
+                <label >  5c. Initial Topups</label>
+                <p class="val">
+                        status : {{initialTopUpStatus}}                            
+                </p>
+                <label >   5d Mobile Application</label>
+                <p class="val">
+                        status : {{mobileAppStatus}}                            
+                </p>
+                <label >   5e Documents</label>
+                <p class="val">
+                        status : {{docsStatus}}                            
+                </p>
+      
+        </div>
+          
+          </div>
+      
+          <div class="col-6 rightDivEqual">
+            
+          <div class="row">
+                <div class="col-6 val  text-left">
+                   Current Status 
+                                 
+                </div>
+                <div class="col-6 val  text-left">
+                    Pending
+                                    
+                    </div>
+          </div>
+          <div class="row">
+                <div class="col-6 val text-left">
+           Requested Status by Maker
+                         
+          </div>
+           <div class="col-6  val text-left">
+                <select class=" form-control" required formControlName="requestedStatus" name="requestedStatus">
+                        <option value="">Select</option>
+                        <option>Activated</option>
+                        <option>Conditionally Activated</option>
+                        <option>Dectivated - Banned</option>
+                        <option>Dectivated - Suspended</option>
+                        <option>Dectivated - pullout</option>
+                        <option>Activated - Probation</option>
+                        <option>Conditionally Activated - Probation</option>
+                 </select>
+                            
+            </div>
+          </div>
+       
+          <div>
+                <label  >Remarks</label>
+                <textarea  formControlName="statusMakerRemarks" maxlength="255" class="form-control" placeholder = "Your message" required></textarea>
+                </div>       
+      
+                <div class="row" style="margin-top:3vw">
+                        <div class="col ">
+                            <button type="button" class="center btn btn-primary"  >View History</button>
+                      
+                        </div>
+                        <div class="col ">
+                      
+                      <button type="button" class="center btn btn-primary " [disabled]="!statusMaker.valid">Submit  For Approval</button>
+                      </div>
+                      </div>
+      
+            
+                      <div class="row" style="margin-top:3vw">
+                            <div class="col-6 val  text-left">
+                               Biker Status by Approver :
+                                             
+                            </div>
+                            <div class="col-6 val  text-left">
+                                
+                                                
+                                </div>
+                      </div>
+                      <div class="row">
+                            <div class="col-6 val  text-left">
+                               Reason for Rejection : 
+                                             
+                            </div>
+                            <div class="col-6 val  text-left">
+                                
+                                                
+                                </div>
+                      </div>
+                      <div class="row">
+                            <div class="col-6 val  text-left">
+                               Last Modified  at : 
+                                             
+                            </div>
+                            <div class="col-6 val  text-left">
+                                
+                                                
+                                </div>
+                      </div>
+                      <div class="row">
+                            <div class="col-6 val  text-left">
+                               Approver Name : 
+                                             
+                            </div>
+                            <div class="col-6 val  text-left">
+                                
+                                                
+                                </div>
+                      </div>
+      
+            </div>
+      
+       
+      </div>
+      </div>  
+      </form> 
+      
+      
+      </ng-template>
+      </ngb-tab>
+      <ngb-tab id="step3b" title="Biker Photo" >
+        <ng-template ngbTabContent> 
+            <div class="container ">
+                <div class="row">
+          <div class="col-8" > 
+        <form [formGroup]="bikerPhoto">
+        <div class="form-group">
+      
+        <h5 >Biker Photo</h5>
+         <label >Biker Name</label>
+      <div class="val">{{bikerName}}</div>
+      <label >Mobile Number</label>
+      <div class="val">{{bikerId}}</div>
+      <label >Reg Id</label>
+      <div class="val">{{regId}}</div>
+      <label >Biker Photo</label>
+        <div class="filediv">
+          <label class="choosePhoto">Choose Photo</label>
+            <input type="file" class="hide_file"  (change)="onFileSelected($event)" formControlName="bikerImg" accept="image/*"  id="exampleFormControlFile1">
+            <span _ngcontent-hbq-c0="" style="
+            color: black;
+            padding: 10px;
+        ">{{selectedFile}}</span>
+          </div>
+          
+            
+      
+      <div>
+      <label  >Remarks</label>
+      <textarea  formControlName="bikerPhotoRemarks" maxlength="255" class="form-control" placeholder = "Your message" required></textarea>
+      <span style="font-size:9px;color:#a29595;">
+          Minimum 255 characters allowed</span>
+      </div>     
+      </div>
+      </form> 
+      </div>
+      
+      <div class="col-4 rightDivEqual" style="margin-top:50px">
+        
+          <div class="status-box"> 
+              <div >
+                  <p style="width:100%">
+                      Status(Biker Id No): {{statusBikerIdNo}}
+                   </p>
+                <p style="width:100%">
+                  Requested Status by Maker : {{statusByMaker}}
+               </p>
+               <p style="width:100%">
+                  Status by Approver:  {{statusByApprover}}
+              </p>
+            </div> 
+           </div>
+      </div>
+      
+      </div>
+      
+      <div class="row">
+          <div class="col-8 center">
+              <button type="button" class="btn btn-primary" [disabled]="!bikerPhoto.valid" (click)="Save('step3c')">Save</button>
+        
+          </div>
+          <div class="col-4 center">
+        
+        <button type="button" class="btn btn-primary ">View History</button>
+        </div>
+        </div> 
+      
+      </div>
+      
+      
+      </ng-template>
+      </ngb-tab> 
+      <ngb-tab id="step4b" >
+          <ng-template ngbTabTitle>Assign Biker ID No</ng-template>
+          <ng-template ngbTabContent> 
+              <div class="container ">
+                  <div class="row">
+            <div class="col-8" > 
+          <form [formGroup]="assignBikerIDNo">
+          <div class="form-group">
+          <h5 class="label">Assign Biker ID No</h5>
+          <label >Biker Name</label>
+          <div class="val">{{bikerName}}</div>
+          <label >Mobile Number</label>
+          <div class="val">{{bikerId}}</div>
+          <label >Reg Id</label>
+          <div class="val">{{regId}}</div>
+          
+        
+             
+            
+          <label  >Assigned Biker ID No</label>           
+          <input class="form-control" type="text" placeholder="" formControlName="assignedBikerID" >
+      
+         
+        </div>
+        </form> 
+        </div>
+        
+        <div class="col-4 rightdiv">
+            <div class="status-box"> 
+                <div >
+              <p style="width:100%">
+                    Status (Biker Photo) : {{statusBikerPhoto}}
+              </p>
+              
+             <p style="width:100%">
+                Requested Status by Maker : {{statusByMaker}}
+             </p>
+             <p style="width:100%">
+                Status by Approver:  {{statusByApprover}}
+            </p>
+             
+              </div> 
+             </div>
+        </div>
+        </div>
+        
+      
+        <div class="row">
+            <div class="col-8 center">
+                <button type="button" class="btn btn-primary" [disabled]="!assignBikerID.valid" (click)="Save('step4a')">Save</button>
+          
+            </div>
+            <div class="col-4 center">
+          
+          <button type="button" class="btn btn-primary ">View History</button>
+          </div>
+          </div> 
+      
+        </div>
+        </ng-template>
+          </ngb-tab>
+      
+          
+      <ngb-tab id="step5"  title="Initial Gear Releasing">
+            <ng-template ngbTabContent>
+                
+                <div class="container step5">
+                    <div class="row">
+              <div class="col-8" > 
+            <form [formGroup]="initialGearReleasing">
+            <div class="form-group">
+            <h5 class="label">Initial Gear Releasing</h5>
+            <div class="row">
+                <div class="col-6 val text-left" >
+               
+                    <label >  Biker Name </label>
+              </div>
+              <div class="col-6 val text-left" >
+               
+                  <img class="bikerPhotoDis" src="assets/sort.png"   />
+            </div>
+            </div>
+           
+                <div class="row">
+                  <div class="col-6 val text-left" >
+                 
+                {{bikerName}} 
+                </div>
+              </div>
+              <label > Mobile Number</label>
+      
+            <div class="row">
+           <div class="col-6 val text-left">
+      
+                      {{bikerMobileNo}} 
+                    
+                  </div>
+                </div>
+                <label > Reg Id</label>
+        
+              <div class="row">
+             <div class="col-6 val text-left">
+        
+                        {{regId}} 
+                      
+                    </div>
+                  </div>
+              <label > Biker Id</label>
+        
+              <div class="row">
+             <div class="col-6 val text-left">
+        
+                        {{bikerId}} 
+                      
+                    </div>
+                  </div>
+      
+                  <div class="row" style="margin-top:3vw">
+                        <div class="col-2 val  text-left">
+                         ID :
+                        </div>
+                                <div class="input-group col-4" >
+                                        <span class="input-group-btn">
+                                           <button class="btn btn-white btn-minuse" (click)="incrementdecrement('Id','dec')" type="button">-</button>
+                                        </span>
+                                        <input type="text" formControlName="inputId" class="form-control no-padding add-color text-center height-25" maxlength="3" value="1">
+                                        <span class="input-group-btn">
+                                           <button class="btn btn-red btn-pluss" (click)="incrementdecrement('Id','inc')" type="button">+</button>
+                                        </span>
+                                 </div>         
+                            
+                            <div class="col-2 val  text-left">
+                                    BIKER VEST :
+                                </div>   
+                                           <div class="input-group col-4" >
+                                                   <span class="input-group-btn">
+                                                      <button class="btn btn-white btn-minuse" (click)="incrementdecrement('BikerVest','dec')" type="button">-</button>
+                                                   </span>
+                                                   <input type="text" formControlName="inputBikerVest" class="form-control no-padding add-color text-center height-25" maxlength="3" value="1">
+                                                   <span class="input-group-btn">
+                                                      <button class="btn btn-red btn-pluss" (click)="incrementdecrement('BikerVest','inc')" type="button">+</button>
+                                                   </span>
+                                            </div>         
+                                           
+      
+                  </div>
+                  
+                  <div class="row" >
+                        <div class="col-2 val  text-left">
+                         HELMET :
+                                         
+                        </div>
+                       
+                                <div class="input-group col-4 " >
+                                        <span class="input-group-btn">
+                                           <button class="btn btn-white btn-minuse" (click)="incrementdecrement('Helmet','dec')" type="button">-</button>
+                                        </span>
+                                        <input type="text" formControlName="inputHelmet" class="form-control no-padding add-color text-center height-25" maxlength="3" value="1">
+                                        <span class="input-group-btn">
+                                           <button class="btn btn-red btn-pluss" (click)="incrementdecrement('Helmet','inc')" type="button">+</button>
+                                        </span>
+                                 </div>         
+                            
+                            <div class="col-2 val  text-left">
+                                    SHOWER CAP :
+                                                    
+                                   </div>
+                                  
+                                           <div class="input-group col-4 ">
+                                                   <span class="input-group-btn">
+                                                      <button class="btn btn-white btn-minuse" (click)="incrementdecrement('ShowerCap','dec')" type="button">-</button>
+                                                   </span>
+                                                   <input type="text" formControlName="inputShowerCap" class="form-control no-padding add-color text-center height-25" maxlength="3" value="1">
+                                                   <span class="input-group-btn">
+                                                      <button class="btn btn-red btn-pluss" (click)="incrementdecrement('ShowerCap','inc')" type="button">+</button>
+                                                   </span>
+                                            </div>         
+                                       
+      
+                  </div>
+                  <div class="row" >
+                        <div class="col-2 val  text-left">
+                         DRIFIT :
+                                         
+                        </div>
+                       
+                                <div class="input-group col-4" >
+                                        <span class="input-group-btn">
+                                           <button class="btn btn-white btn-minuse" (click)="incrementdecrement('Drift','dec')" type="button">-</button>
+                                        </span>
+                                        <input type="text" formControlName="inputDrift" class="form-control no-padding add-color text-center height-25" maxlength="3" value="1">
+                                        <span class="input-group-btn">
+                                           <button class="btn btn-red btn-pluss" (click)="incrementdecrement('Drift','inc')" type="button">+</button>
+                                        </span>
+                                 </div>         
+                            
+                            <div class="col-2 val  text-left">
+                                    FACE MASK :
+                                                    
+                            </div>
+                                           <div class="input-group col-4 " >
+                                                   <span class="input-group-btn">
+                                                      <button class="btn btn-white btn-minuse" (click)="incrementdecrement('FaceMask','dec')" type="button">-</button>
+                                                   </span>
+                                                   <input type="text" formControlName="inputFaceMask" class="form-control no-padding add-color text-center height-25" maxlength="3" value="1">
+                                                   <span class="input-group-btn">
+                                                      <button class="btn btn-red btn-pluss" (click)="incrementdecrement('FaceMask','inc')" type="button">+</button>
+                                                   </span>
+                                            </div>         
+                                       
+      
+                  </div>
+                  <div class="row" >
+                    <div class="col-2 val  text-left">
+                     HARNESS :
+                                     
+                    </div>
+                   
+                            <div class="input-group col-4" >
+                                    <span class="input-group-btn">
+                                       <button class="btn btn-white btn-minuse" (click)="incrementdecrement('Harness','dec')" type="button">-</button>
+                                    </span>
+                                    <input type="text" formControlName="inputHarness" class="form-control no-padding add-color text-center height-25" maxlength="3" value="1">
+                                    <span class="input-group-btn">
+                                       <button class="btn btn-red btn-pluss" (click)="incrementdecrement('Harness','inc')" type="button">+</button>
+                                    </span>
+                             </div>    
+                  </div>
+                  <div>
+                        <label  >Remarks</label>
+                        <textarea  formControlName="initialGearRemarks" maxlength="255" class="form-control" placeholder = "Your message" required></textarea>
+                        </div>  
+      </div>
+            </form> 
+            </div>
+      
+            <div class="col-4 rightDivEqual">
+                <p style="width:100%">
+                    Status (Biker Photo) : {{statusBikerPhoto}}
+              </p>
+              <p style="width:100%">
+                  Status (Biker ID No) : {{statusBikerIdNo}}
+            </p>
+            <label >  Requested Status by Maker</label>
+        
+            <div class="row">
+           <div class="col-6 val text-left">
+      
+                      {{requestedStatus}} 
+                    
+                  </div>
+                </div>
+                <label > Status by Approver</label>
+        
+                <div class="row">
+               <div class="col-6 val text-left">
+          
+                          {{statusByApprover}} 
+                        
+                      </div>
+                    </div>
+          
+         
+                <div class="leftBorder">
+      
+              
+                    <div class="row" style="margin-top:3vw">
+                            <div class="col-6 val  text-left">
+                             ID :
+                                             
+                            </div>
+                            <div class="col-6 val  text-left">
+                                
+                                      1          
+                                </div>
+                      </div>
+              
+                        <div class="row" >
+                              <div class="col-6 val  text-left">
+                               Helmet :
+                                               
+                              </div>
+                              <div class="col-6 val  text-left">
+                                  
+                                                  
+                                  </div>
+                        </div>
+                        <div class="row">
+                              <div class="col-6 val  text-left">
+                                Drifit :
+                                               
+                              </div>
+                              <div class="col-6 val  text-left">
+                                  
+                                                  
+                                  </div>
+                        </div>
+                        <div class="row">
+                              <div class="col-6 val  text-left">
+                                Biker Vest :
+                                               
+                              </div>
+                              <div class="col-6 val  text-left">
+                                  
+                                                  
+                                  </div>
+                        </div>
+                        <div class="row">
+                              <div class="col-6 val  text-left">
+                                 Shower Cap : 
+                                               
+                              </div>
+                              <div class="col-6 val  text-left">
+                                  
+                                                  
+                                  </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-6 val  text-left">
+                                   Face mask : 
+                                                 
+                                </div>
+                                <div class="col-6 val  text-left">
+                                    
+                                                    
+                                    </div>
+                          </div>
+                          <div class="row">
+                          <div class="col-6 val  text-left">
+                            Harness : 
+                                          
+                         </div>
+                         <div class="col-6 val  text-left">
+                             
+                                             
+                             </div>
+                   </div>
+                          
+                          <div class="row">
+                                <div class="col-6 val  text-left">
+                                   Status : 
+                                                 
+                                </div>
+                                <div class="col-6 val  text-left">
+                                    
+                                    Complete                
+                                    </div>
+                          </div>
+        
+              </div>
+        
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-8 center">
+                    <button type="button" class="btn btn-primary" [disabled]="!initialGearReleasing.valid"  (click)="Save('step1')">Save</button>
+              
+                </div>
+                <div class="col-4 center">
+              
+              <button type="button" class="btn btn-primary ">View History</button>
+              </div>
+              </div> 
+      </div>       
+        </ng-template>
+        </ngb-tab>
+        </ngb-tabset> 
+      
+        <ng-template #content let-c="close" let-d="dismiss" >
+            <div class="modal-header"  style="border-bottom: none;">
+              <h4 class="modal-title" id="modal-basic-title">Edit Mobile Number</h4>
+              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <input type="text" id="editMobile" style="border: none;border-bottom: 1px solid grey;width:80%" [(ngModel)]="editedMobile" />
+            </div>
+            <div class="modal-footer" style="border-top: none;">
+              <button type="button" class="btn btn-outline-dark" (click)="updateMobile()">Submit</button>
+            </div>
+          </ng-template>
