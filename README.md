@@ -2,6 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
 
+## Installation Node Modules
+Install Node and NPM and create new angular 8 project named biker and then replace Src the folder. Follow the package.Json file as given in this example.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -13,6 +16,11 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Project pages and navigation 
+Landing page - Status Approver
+Onboarding page - Navigated from the status Approver on click of the Name of the biker
+training Lecture Attendeeds - Navigated from the status Approver on click of the button at the bottom 
 
 ## Running unit tests
 
